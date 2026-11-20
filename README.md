@@ -92,3 +92,13 @@ Le code peut être consulté et modifié avec **Visual Studio Code**. Pour mettr
 ## Indépendance du projet
 
 ColorDigitLogic est un projet personnel indépendant, non affilié aux créateurs du jeu Acrylogic. Les grilles d’origine ne sont pas distribuées avec cette application.
+
+
+## Version 16 — Contrôle des erreurs
+
+En mode jeu, la saisie d'un chiffre ou d'une couleur est comparée aux indices voisins dès que les deux valeurs nécessaires sont renseignées. Toute nouvelle contradiction incrémente le compteur d'erreurs. Le compteur est inclus dans les exports JSON et les sauvegardes locales. Annuler une action ne retire pas les erreurs déjà commises.
+
+
+## Version 17 — Solveur (étape 1)
+
+Le bouton **Résoudre** cherche une affectation des paires chiffre-couleur respectant tous les indices, les cases déjà saisies et l'unicité de chaque paire. Il recherche jusqu'à deux solutions pour distinguer une solution unique de plusieurs solutions, avec une limite de 7 secondes. Une solution trouvée peut être affichée après confirmation. Le calcul s'effectue localement dans le navigateur.
