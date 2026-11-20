@@ -1,10 +1,10 @@
-# Acrylogic
+# ColorDigitLogic
 
-**Acrylogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
+**ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V14** — application web installable (PWA), avec prise en charge du fonctionnement hors ligne après un premier chargement.
+**Version actuelle : V15** — application web installable (PWA), avec prise en charge du fonctionnement hors ligne après un premier chargement.
 
-**Jouer :** https://pixou2000.github.io/Acrylogic/
+**Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
 ## Fonctionnalités
 
@@ -46,12 +46,12 @@ Le chronomètre démarre au passage en mode jeu et peut être mis en pause ou re
 
 Les sauvegardes locales et les records **ne se synchronisent pas automatiquement** entre appareils. Pour transférer une partie, utiliser le fichier JSON.
 
-## Installer Acrylogic sur iPhone ou iPad
+## Installer ColorDigitLogic sur iPhone ou iPad
 
-1. Ouvrir https://pixou2000.github.io/Acrylogic/ dans **Safari**.
+1. Ouvrir https://pixou2000.github.io/ColorDigitLogic/ dans **Safari**.
 2. Toucher le bouton **Partager**.
 3. Choisir **Sur l'écran d'accueil**, puis **Ajouter**.
-4. Lancer Acrylogic depuis l'icône ajoutée.
+4. Lancer ColorDigitLogic depuis l'icône ajoutée.
 
 L'application est conçue pour fonctionner **hors ligne après un premier chargement en ligne**. Pour vérifier : ouvrir l'application une première fois, fermer l'application, activer le mode Avion et la relancer depuis son icône.
 
@@ -87,4 +87,8 @@ Le code peut être consulté et modifié avec **Visual Studio Code**. Pour mettr
 
 ---
 
-*Projet personnel indépendant, non affilié au jeu Acrylogic d'origine.*
+*Projet personnel indépendant, non affilié au jeu ColorDigitLogic d'origine.*
+
+## Indépendance du projet
+
+ColorDigitLogic est un projet personnel indépendant, non affilié aux créateurs du jeu Acrylogic. Les grilles d’origine ne sont pas distribuées avec cette application.
