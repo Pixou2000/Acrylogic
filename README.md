@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V18** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V19** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -116,3 +116,15 @@ Au passage en **mode jeu**, l'application calcule une solution de référence à
 - Les sauvegardes JSON et les records restent compatibles avec les versions précédentes.
 
 **Limite connue :** la recherche s'exécute dans le navigateur ; sur une grille difficile, l'interface peut être momentanément occupée pendant le calcul.
+
+
+## Version 19 — Générateur de grilles
+
+Le bouton **Générer une grille** crée une répartition aléatoire de toutes les paires chiffre-couleur, calcule un indice par frontière (somme ou mélange), puis utilise le solveur pour rechercher une grille à solution unique. Une fois cette unicité établie, il retire des indices tant que l'unicité reste démontrée.
+
+- Les cases sont **vides** dans la grille créée : il faut passer en mode jeu pour la résoudre.
+- Les grilles ne sont annoncées comme **uniques** que lorsque le solveur a terminé la vérification sans dépasser son délai.
+- Si la recherche échoue, la grille en cours est conservée.
+- Le générateur travaille localement dans le navigateur, sans serveur.
+- Le résultat est exportable en JSON comme les autres grilles.
+- **Limites :** la génération peut prendre plusieurs secondes, notamment en 5×6 ; la difficulté n'est pas encore calibrée, et la suppression des indices est une heuristique, pas une minimisation garantie.
