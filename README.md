@@ -102,3 +102,17 @@ En mode jeu, la saisie d'un chiffre ou d'une couleur est comparée aux indices v
 ## Version 17 — Solveur (étape 1)
 
 Le bouton **Résoudre** cherche une affectation des paires chiffre-couleur respectant tous les indices, les cases déjà saisies et l'unicité de chaque paire. Il recherche jusqu'à deux solutions pour distinguer une solution unique de plusieurs solutions, avec une limite de 7 secondes. Une solution trouvée peut être affichée après confirmation. Le calcul s'effectue localement dans le navigateur.
+
+## Version 18 — Vérification par solution unique
+
+Au passage en **mode jeu**, l'application calcule une solution de référence à partir des **indices seuls**, en ignorant volontairement toutes les valeurs déjà saisies dans les cases. Si une seule solution est trouvée et que la recherche se termine sans dépasser le délai, chaque chiffre et couleur nouvellement saisi est immédiatement comparé à cette solution.
+
+- Une saisie incorrecte augmente le compteur d'erreurs **une seule fois**, même si elle contredit également un indice.
+- Cliquer une deuxième fois sur une valeur déjà présente ne compte pas comme une nouvelle saisie.
+- Les erreurs sont comptabilisées même si les cases voisines sont encore vides.
+- Si plusieurs solutions existent, si aucune solution n'existe ou si le calcul dépasse 7 secondes, seul le contrôle des indices voisins est appliqué.
+- Modifier les indices invalide la solution de référence. Elle est recalculée lors du prochain passage en mode jeu.
+- Le bouton **Résoudre** continue de tenir compte des valeurs actuellement présentes dans les cases, contrairement au calcul de la solution de référence.
+- Les sauvegardes JSON et les records restent compatibles avec les versions précédentes.
+
+**Limite connue :** la recherche s'exécute dans le navigateur ; sur une grille difficile, l'interface peut être momentanément occupée pendant le calcul.
