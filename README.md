@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V25** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V27** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -201,3 +201,22 @@ Chaque **partie terminée normalement** est enregistrée dans le stockage local 
 - Les sauvegardes et exports de grille contiennent `clueCount` à titre informatif ; au chargement, le nombre est recalculé depuis `clues`, source de vérité.
 - Export des résultats au format version 3, avec import compatible avec les fichiers des versions 2 et 3.
 - Les anciennes parties n’ayant pas enregistré le nombre d’indices affichent « — » : cette donnée ne peut pas être reconstituée depuis les seuls résultats historiques.
+
+
+## V26 — Classement des records par erreurs, puis temps
+
+Le record d’un format est désormais la partie avec **le moins d’erreurs**, puis, à égalité d’erreurs, **le temps le plus court**. Cette règle s’applique aux nouvelles parties, à l’importation et à la fusion des historiques.
+
+Les records anciens dont le nombre d’erreurs est inconnu ne sont plus assimilés à zéro erreur. Ils restent visibles jusqu’à l’obtention d’un résultat comparable avec un nombre d’erreurs connu. L’historique des parties n’est pas modifié.
+
+
+## V27 — Première estimation de difficulté (expérimentale)
+
+- Bouton **Évaluer la difficulté** en mode préparation, dans les commandes secondaires.
+- Analyse des indices d'une grille vide, sans utiliser les cases remplies pendant une partie.
+- Propagation logique des contraintes de voisinage, élimination des paires déjà fixées et identification d'une paire ne pouvant apparaître que dans une case.
+- Niveau indicatif de 1 à 5, calculé selon le nombre de passages logiques et les déductions nécessaires. Le niveau 5 signifie **non résolu par cet évaluateur simple** ; il ne prouve pas que la grille soit intrinsèquement experte.
+- Le niveau estimé est affiché après génération et dans l'historique des parties terminées, et conservé dans les exports JSON de grilles et de résultats.
+- Les parties antérieures ne possèdent pas de niveau et sont affichées avec « — ».
+
+**Limites :** cet évaluateur est une première version, non étalonnée sur les niveaux officiels Acrylogic. Il ne remplace pas le solveur exact pour vérifier l'unicité. Les grilles à plusieurs solutions peuvent également être classées provisoirement niveau 5.
