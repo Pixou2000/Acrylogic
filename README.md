@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V22** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V23** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -170,3 +170,15 @@ Chaque **partie terminée normalement** est enregistrée dans le stockage local 
 - Les parties effectuées avant la V22 ne peuvent pas être reconstituées à partir des seuls records.
 
 **Important :** les statistiques sont basées sur les parties terminées, et non sur toutes les tentatives commencées. Le classement par niveau de difficulté sera ajouté ultérieurement, lorsque l'évaluateur de difficulté sera disponible.
+
+
+## V23 — Interface par écran
+
+- Accueil : format, grille vide, génération, chargement local ou import JSON, historique et records.
+- Préparation : grille et palette d’indices immédiatement dessous, bouton Jouer ; commandes secondaires dans Options sur téléphone ou à droite sur écran large.
+- Jeu : grille et palette chiffres/couleurs sous la grille, chronomètre et erreurs en bandeau compact ; commandes secondaires dans Options.
+- Historique : écran dédié avec statistiques, records et import/export des résultats.
+- Taille des cases calculée selon l’espace disponible et le format de grille.
+- Le moteur de jeu, le solveur, les sauvegardes et l’historique restent inchangés.
+
+**Attention :** le retour à l’accueil ne supprime pas la grille en cours ; elle reste en mémoire tant que la page n’est pas rechargée. Utiliser « Sauvegarder sur cet appareil » pour la conserver après fermeture.
