@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V24** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V25** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -191,3 +191,13 @@ Chaque **partie terminée normalement** est enregistrée dans le stockage local 
 - Lorsqu'une grille est générée, l'application ouvre directement le **mode jeu** et démarre le chronomètre. Le résultat de génération reste visible dans le message de statut.
 - Les boutons **Pause/Reprendre** et **Exporter** sont accessibles directement dans la barre du mode jeu, sur mobile et ordinateur.
 - Les commandes secondaires restent dans Options sur mobile.
+
+
+## V25 — Nombre d’indices dans les résultats
+
+- Affichage permanent du nombre d’indices effectivement présents dans la grille, en préparation et en jeu (indices positifs et négatifs comptés chacun pour un).
+- Ajout de la colonne **Indices** dans l’historique des parties.
+- Chaque nouvelle partie terminée enregistre `clueCount` avec le format, la durée, les erreurs et la date.
+- Les sauvegardes et exports de grille contiennent `clueCount` à titre informatif ; au chargement, le nombre est recalculé depuis `clues`, source de vérité.
+- Export des résultats au format version 3, avec import compatible avec les fichiers des versions 2 et 3.
+- Les anciennes parties n’ayant pas enregistré le nombre d’indices affichent « — » : cette donnée ne peut pas être reconstituée depuis les seuls résultats historiques.
