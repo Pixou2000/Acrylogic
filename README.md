@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V30** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V31** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -229,3 +229,11 @@ Entre « But du jeu » et « Règles », ajout d’un exemple statique 2×3 mont
 - L’exemple 2×3 sur l’accueil présente maintenant un indice **violet** entre deux cases de couleurs bleue et rouge. Tous les indices de l’exemple correspondent à la solution affichée.
 - Les règles comportent un tableau visuel des mélanges : deux cases colorées, puis leur indice sous forme de cercle. Les 15 exemples couvrent les mélanges de couleurs primaires, le blanc neutre, le noir dominant et les paires de couleurs identiques.
 - Aucun changement de logique de jeu ni de format de sauvegarde.
+
+
+## V31 — Clarification de l’exemple sur l’accueil
+
+- Déplacement de la règle d’unicité des combinaisons chiffre + couleur immédiatement après le but du jeu, avant la grille 2×3.
+- Légende visuelle des trois indices (numérique, couleur, négatif) sous la grille d’exemple.
+- Le dernier indice numérique de l’exemple est désormais un **indice négatif 4** (la somme réelle de la dernière ligne est 5), avec un contour rouge, dans les deux vues de la même grille.
+- Les autres règles et les exemples de mélanges sont conservés.
