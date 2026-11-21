@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V28** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V29** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -217,3 +217,8 @@ Les records anciens dont le nombre d’erreurs est inconnu ne sont plus assimil�
 - L’évaluation est calculée à partir des indices de la grille, indépendamment des réponses déjà saisies.
 - Le niveau est enregistré avec chaque partie terminée et apparaît dans l’historique. Les anciennes parties sans niveau affichent « — » ; l’importation de leurs fichiers reste possible.
 - **Attention :** l’évaluateur V27/V28 est encore une estimation provisoire fondée sur des propagations de contraintes. Il ne distingue pas encore rigoureusement les cinq techniques progressives prévues ; le niveau 5 peut signifier simplement que ces techniques sont insuffisantes.
+
+
+## V29 — Exemple visuel sur la page d’accueil
+
+Entre « But du jeu » et « Règles », ajout d’un exemple statique 2×3 montrant côte à côte la grille à compléter et sa solution. Les indices sont identiques dans les deux grilles. Les six combinaisons chiffre-couleur sont utilisées exactement une fois. Cet exemple est purement illustratif et ne modifie ni la partie ni le stockage.
