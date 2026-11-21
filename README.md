@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V23** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V24** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -182,3 +182,12 @@ Chaque **partie terminée normalement** est enregistrée dans le stockage local 
 - Le moteur de jeu, le solveur, les sauvegardes et l’historique restent inchangés.
 
 **Attention :** le retour à l’accueil ne supprime pas la grille en cours ; elle reste en mémoire tant que la page n’est pas rechargée. Utiliser « Sauvegarder sur cet appareil » pour la conserver après fermeture.
+
+
+## V24 — Génération suivie et lancement direct
+
+- Un écran de progression reste visible pendant la génération, avec tentative en cours, temps écoulé et nombre d'indices examinés. La barre représente le temps consommé dans le budget de génération, **pas** un pourcentage garanti d'achèvement.
+- Le résultat final est affiché, y compris en cas d'échec (bouton Continuer pour revenir à l'accueil).
+- Lorsqu'une grille est générée, l'application ouvre directement le **mode jeu** et démarre le chronomètre. Le résultat de génération reste visible dans le message de statut.
+- Les boutons **Pause/Reprendre** et **Exporter** sont accessibles directement dans la barre du mode jeu, sur mobile et ordinateur.
+- Les commandes secondaires restent dans Options sur mobile.

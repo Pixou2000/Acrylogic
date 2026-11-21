@@ -37,8 +37,11 @@ body{background:#f3f6fa}header{padding:9px 14px}header h1{font-size:1.05rem}head
 #work-main #mode{font-weight:650}
 @media(max-width:800px){#work-layout{display:block}#work-side{display:none}#work-main>.panel{padding:5px 8px}#work-main .board-wrap{padding:13px 5px 16px}#work-main #case-panel .stack,#work-main #clue-panel .stack{gap:5px}#work-main .palette button{min-width:32px;padding:5px}#work-main .swatch{width:27px;height:27px}#work-main .status{font-size:.75rem}#work-main .clue{width:23px;height:23px;font-size:.65rem}}
 @media(min-width:801px){#work-main .board-wrap{min-height:250px}}
-</style><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#243a53"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="ColorDigitLogic"><link rel="apple-touch-icon" href="./icon-192.png"></head><body><header><h1>ColorDigitLogic · Version 23</h1><small>Plateau, indices et vérification — prototype indépendant</small></header><main class="wrap"><section><div class="panel"><div class="toolbar"><label for="size">Format</label><select id="size"><option value="2x3" selected>2×3</option><option value="3x3">3×3</option><option value="3x4">3×4</option><option value="4x4">4×4</option><option value="4x5">4×5</option><option value="5x5">5×5</option><option value="5x6">5×6</option></select><button id="new">Nouvelle grille vide</button><button id="generate">Générer une grille</button><button id="mode">Passer en mode jeu</button><span id="count" class="muted"></span><span id="mistakes" class="muted" style="font-weight:700">Erreurs : 0</span><span id="clock" class="muted" style="font-variant-numeric:tabular-nums;font-weight:700">⏱ 00:00</span><button id="timer-toggle">Démarrer</button><button id="timer-reset">Remettre à zéro</button></div><p class="hint">En préparation, sélectionne un emplacement d’indice puis choisis une somme ou un mélange (un second clic sur la même valeur efface l’indice). En jeu, remplis les cases. Les cases grises ne sont pas encore renseignées.</p><div class="board-wrap"><div id="board" class="board" aria-label="Plateau ColorDigitLogic"></div></div><div class="actions"><button id="undo">↶ Annuler</button><button id="check">Vérifier</button><button id="solve">Résoudre</button><button id="clear">Effacer la sélection</button></div><p id="solver-result" class="hint" hidden></p><p id="status" class="status" role="status">Choisis une case ou un emplacement d'indice.</p></div></section><aside><div class="panel" id="case-panel"><h2>Modifier une case</h2><div class="stack"><div><label>Chiffre</label><div id="numbers" class="palette"></div></div><div><label>Couleur</label><div id="colors" class="palette"></div></div></div></div><div class="panel" id="clue-panel"><h2>Saisir un indice</h2><div class="stack"><div><label>Sommes possibles</label><div id="cluenumbers" class="palette"></div></div><div><label>Mélange de couleurs</label><div id="cluecolors" class="palette"></div></div><label><input type="checkbox" id="negative"> Indice négatif (cercle rouge)</label></div></div><div class="panel"><h2>Sauvegarder / reprendre</h2><div class="stack"><button id="save" class="wide">Sauvegarder sur cet appareil</button><button id="load" class="wide">Recharger la sauvegarde</button><button id="export" class="wide">Exporter en fichier JSON</button><label>Importer une grille JSON <input type="file" id="import" accept=".json,application/json"></label></div><h2>Historique des parties et statistiques</h2><p class="muted">Chaque grille terminée est enregistrée automatiquement sur cet appareil.</p><div id="stats-summary" class="muted"></div><div id="games-table" class="records-table"></div><h2>Records par format</h2><div id="records-table" class="records-table"></div><div class="stack"><button id="export-records" class="wide">Exporter les résultats (JSON)</button><label>Importer des résultats JSON <input type="file" id="import-records" accept=".json,application/json"></label></div><p id="record" class="muted"></p><p class="muted">La sauvegarde locale dépend du navigateur. Pour conserver une grille durablement ou changer d'appareil, exporte le fichier JSON.</p></div></aside></main><div id="home-screen"><h2>ColorDigitLogic</h2><label for="home-size">Format de la grille</label><select id="home-size"><option value="2x3">2×3</option><option value="3x3">3×3</option><option value="3x4">3×4</option><option value="4x4">4×4</option><option value="4x5">4×5</option><option value="5x5">5×5</option><option value="5x6">5×6</option></select><button id="home-new">▦ Nouvelle grille vide</button><button id="home-generate">✦ Générer une grille</button><button id="home-load">↥ Charger une grille sauvegardée</button><button id="home-stats">▤ Historique et records</button><label class="muted">Ou importer une grille JSON <input type="file" id="home-import" accept=".json,application/json"></label></div>
-<div id="work-screen"><div class="workbar"><button id="go-home">← Accueil</button><strong id="work-title">Préparation</strong><span id="work-format" class="muted"></span><span class="grow"></span><span id="work-clock" class="muted"></span><span id="work-errors" class="muted"></span><button id="work-play">Jouer ▶</button><details id="mobile-options"><summary>☰ Options</summary><div id="mobile-tools"></div></details></div><div id="work-layout"><div id="work-main"><div class="panel" id="work-board-panel"><div class="board-wrap" id="work-board-slot"></div><div class="palette-area" id="work-palettes"></div><div id="work-status"></div></div></div><div id="work-side"><div class="panel tools-panel" id="desktop-tools"></div></div></div></div>
+#generation-screen{position:fixed;inset:0;z-index:200;background:rgba(20,35,53,.76);display:flex;align-items:center;justify-content:center;padding:20px}
+#generation-screen[hidden]{display:none!important}.generation-box{background:white;color:#23364c;border-radius:16px;padding:24px;max-width:460px;width:100%;box-shadow:0 12px 45px #0004}.generation-box h2{margin-top:0}.generation-track{height:10px;border-radius:10px;background:#e0e7ef;overflow:hidden;margin:16px 0}.generation-track>div{height:100%;background:#4185c7;width:0;transition:width .15s}.generation-box button{margin-top:10px}
+#work-pause,#work-export{white-space:nowrap}@media(max-width:600px){#work-pause,#work-export{padding:5px 7px;font-size:.78rem}.workbar{gap:4px}}
+</style><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#243a53"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="ColorDigitLogic"><link rel="apple-touch-icon" href="./icon-192.png"></head><body><header><h1>ColorDigitLogic · Version 24</h1><small>Plateau, indices et vérification — prototype indépendant</small></header><main class="wrap"><section><div class="panel"><div class="toolbar"><label for="size">Format</label><select id="size"><option value="2x3" selected>2×3</option><option value="3x3">3×3</option><option value="3x4">3×4</option><option value="4x4">4×4</option><option value="4x5">4×5</option><option value="5x5">5×5</option><option value="5x6">5×6</option></select><button id="new">Nouvelle grille vide</button><button id="generate">Générer une grille</button><button id="mode">Passer en mode jeu</button><span id="count" class="muted"></span><span id="mistakes" class="muted" style="font-weight:700">Erreurs : 0</span><span id="clock" class="muted" style="font-variant-numeric:tabular-nums;font-weight:700">⏱ 00:00</span><button id="timer-toggle">Démarrer</button><button id="timer-reset">Remettre à zéro</button></div><p class="hint">En préparation, sélectionne un emplacement d’indice puis choisis une somme ou un mélange (un second clic sur la même valeur efface l’indice). En jeu, remplis les cases. Les cases grises ne sont pas encore renseignées.</p><div class="board-wrap"><div id="board" class="board" aria-label="Plateau ColorDigitLogic"></div></div><div class="actions"><button id="undo">↶ Annuler</button><button id="check">Vérifier</button><button id="solve">Résoudre</button><button id="clear">Effacer la sélection</button></div><p id="solver-result" class="hint" hidden></p><p id="status" class="status" role="status">Choisis une case ou un emplacement d'indice.</p></div></section><aside><div class="panel" id="case-panel"><h2>Modifier une case</h2><div class="stack"><div><label>Chiffre</label><div id="numbers" class="palette"></div></div><div><label>Couleur</label><div id="colors" class="palette"></div></div></div></div><div class="panel" id="clue-panel"><h2>Saisir un indice</h2><div class="stack"><div><label>Sommes possibles</label><div id="cluenumbers" class="palette"></div></div><div><label>Mélange de couleurs</label><div id="cluecolors" class="palette"></div></div><label><input type="checkbox" id="negative"> Indice négatif (cercle rouge)</label></div></div><div class="panel"><h2>Sauvegarder / reprendre</h2><div class="stack"><button id="save" class="wide">Sauvegarder sur cet appareil</button><button id="load" class="wide">Recharger la sauvegarde</button><button id="export" class="wide">Exporter en fichier JSON</button><label>Importer une grille JSON <input type="file" id="import" accept=".json,application/json"></label></div><h2>Historique des parties et statistiques</h2><p class="muted">Chaque grille terminée est enregistrée automatiquement sur cet appareil.</p><div id="stats-summary" class="muted"></div><div id="games-table" class="records-table"></div><h2>Records par format</h2><div id="records-table" class="records-table"></div><div class="stack"><button id="export-records" class="wide">Exporter les résultats (JSON)</button><label>Importer des résultats JSON <input type="file" id="import-records" accept=".json,application/json"></label></div><p id="record" class="muted"></p><p class="muted">La sauvegarde locale dépend du navigateur. Pour conserver une grille durablement ou changer d'appareil, exporte le fichier JSON.</p></div></aside></main><div id="home-screen"><h2>ColorDigitLogic</h2><label for="home-size">Format de la grille</label><select id="home-size"><option value="2x3">2×3</option><option value="3x3">3×3</option><option value="3x4">3×4</option><option value="4x4">4×4</option><option value="4x5">4×5</option><option value="5x5">5×5</option><option value="5x6">5×6</option></select><button id="home-new">▦ Nouvelle grille vide</button><button id="home-generate">✦ Générer une grille</button><button id="home-load">↥ Charger une grille sauvegardée</button><button id="home-stats">▤ Historique et records</button><label class="muted">Ou importer une grille JSON <input type="file" id="home-import" accept=".json,application/json"></label></div>
+<div id="generation-screen" hidden><div class="generation-box"><h2>Génération de la grille</h2><p id="generation-progress" role="status" aria-live="polite">Préparation…</p><div class="generation-track"><div id="generation-bar"></div></div><button id="generation-continue" hidden>Continuer</button></div></div><div id="work-screen"><div class="workbar"><button id="go-home">← Accueil</button><strong id="work-title">Préparation</strong><span id="work-format" class="muted"></span><span class="grow"></span><span id="work-clock" class="muted"></span><span id="work-errors" class="muted"></span><button id="work-play">Jouer ▶</button><button id="work-pause" hidden>Pause</button><button id="work-export" hidden>Exporter</button><details id="mobile-options"><summary>☰ Options</summary><div id="mobile-tools"></div></details></div><div id="work-layout"><div id="work-main"><div class="panel" id="work-board-panel"><div class="board-wrap" id="work-board-slot"></div><div class="palette-area" id="work-palettes"></div><div id="work-status"></div></div></div><div id="work-side"><div class="panel tools-panel" id="desktop-tools"></div></div></div></div>
 <div id="stats-screen"><button id="stats-home">← Accueil</button><div class="panel"><h2>Historique et records</h2><div id="stats-content"></div></div></div>
 <script>
 (function(){
@@ -71,7 +74,7 @@ body{background:#f3f6fa}header{padding:9px 14px}header h1{font-size:1.05rem}head
  },sync(mode){
  $('work-title').textContent=mode==='jeu'?'Jeu':'Préparation';
  $('work-play').textContent=mode==='jeu'?'Modifier les indices':'Jouer ▶';
- $('work-clock').hidden=mode!=='jeu';$('work-errors').hidden=mode!=='jeu';
+ $('work-clock').hidden=mode!=='jeu';$('work-errors').hidden=mode!=='jeu';$('work-pause').hidden=mode!=='jeu';$('work-export').hidden=mode!=='jeu';$('work-pause').textContent=$('timer-toggle').textContent.includes('Pause')?'Pause':'Reprendre';
  const mobile=innerWidth<=800;
  const target=mobile?$('mobile-tools'):$('desktop-tools');
  for(const id of ['mode','undo','check','solve','clear'])target.append($(id));
@@ -82,20 +85,23 @@ body{background:#f3f6fa}header{padding:9px 14px}header h1{font-size:1.05rem}head
  }};
  $('home-size').onchange=()=>{$('size').value=$('home-size').value};
  $('home-new').onclick=()=>{$('size').value=$('home-size').value;window.CDLNew();window.CDLView.show('work')};
- $('home-generate').onclick=()=>{$('size').value=$('home-size').value;$('generate').click();window.CDLView.show('work')};
+ $('home-generate').onclick=()=>{$('size').value=$('home-size').value;$('generate').click()};
  $('home-load').onclick=()=>{if(!localStorage.getItem('colordigitlogic_v1')){alert('Aucune grille sauvegardée sur cet appareil.');return}$('load').click();window.CDLView.show('work')};
  $('home-import').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const data=JSON.parse(await f.text());window.CDLLoad(data);window.CDLView.show('work')}catch(err){alert('Import impossible : '+err.message)}e.target.value=''};
  $('home-stats').onclick=()=>window.CDLView.show('stats');
  $('stats-home').onclick=()=>window.CDLView.show('home');
  $('go-home').onclick=()=>window.CDLView.show('home');
  $('work-play').onclick=()=>$('mode').click();
+ $('work-pause').onclick=()=>{$('timer-toggle').click();window.CDLView.sync(window.CDLMode())};
+ $('work-export').onclick=()=>$('export').click();
+ $('generation-continue').onclick=()=>{$('generation-screen').hidden=true;window.CDLView.show('home')};
  addEventListener('resize',()=>{window.CDLView.sync(window.CDLMode())});
  document.body.className='screen-home';
 })();
 </script><script>
 (()=>{'use strict';const $=id=>document.getElementById(id);const base=['bleu','rouge','jaune','blanc','noir'];const paint={jaune:'#f4d64e',rouge:'#ed6465',bleu:'#64a7e6',blanc:'#fff',noir:'#30343a',orange:'#ef9b40',violet:'#a078cb',vert:'#65b67e'};const mixes=['bleu','rouge','jaune','blanc','noir','violet','vert','orange'];let elapsedMs=0,startedAt=null,timerInterval=null;let state,selected=null,history=[],mode='creation',mistakes=0;let referenceSolution=null,referenceStatus='unchecked',referenceToken=0;let gameCompleted=false;let generating=false;const clone=x=>JSON.parse(JSON.stringify(x));function elapsed(){return elapsedMs+(startedAt===null?0:Date.now()-startedAt)}
 function clockFormat(ms){let t=Math.floor(ms/1000);return String(Math.floor(t/3600)).padStart(2,'0')+':'+String(Math.floor(t/60)%60).padStart(2,'0')+':'+String(t%60).padStart(2,'0')}
-function refreshClock(){$('clock').textContent='⏱ '+clockFormat(elapsed());$('timer-toggle').textContent=startedAt===null?'Démarrer / Reprendre':'Pause'}
+function refreshClock(){$('clock').textContent='⏱ '+clockFormat(elapsed());$('timer-toggle').textContent=startedAt===null?'Démarrer / Reprendre':'Pause';if($('work-pause'))$('work-pause').textContent=startedAt===null?'Reprendre':'Pause'}
 function pauseTimer(){if(startedAt!==null){elapsedMs=elapsed();startedAt=null}refreshClock()}
 function startTimer(){if(startedAt===null)startedAt=Date.now();refreshClock()}
 function resetTimer(){elapsedMs=0;startedAt=null;refreshClock()}
@@ -340,6 +346,8 @@ function generatePuzzle(){
  if(generating)return;
  if(!confirm('Créer une nouvelle grille aléatoire ? La grille actuelle sera remplacée uniquement si la génération réussit.'))return;
  generating=true;
+ $('generation-screen').hidden=false;$('generation-continue').hidden=true;
+ $('generation-progress').textContent='Recherche d’une grille à solution unique…';$('generation-bar').style.width='2%';
  const button=$('generate');button.disabled=true;
  const result=$('solver-result');result.hidden=false;
  result.textContent='Génération en cours : recherche d’une grille à solution unique…';
@@ -348,19 +356,23 @@ function generatePuzzle(){
  const finish=(text,puzzle)=>{
   generating=false;button.disabled=false;
   result.hidden=false;result.textContent=text;
+  $('generation-progress').textContent=text;$('generation-bar').style.width=puzzle?'100%':'0%';
   if(puzzle){
    invalidateReference();pauseTimer();resetTimer();mistakes=0;
    state={cols:puzzle.cols,rows:puzzle.rows,cells:puzzle.cells.map(()=>({n:null,c:null})),clues:puzzle.clues};
    mode='creation';selected=null;history=[];
    $('mode').textContent='Passer en mode jeu';render();
-   message('Grille générée. Passe en mode jeu pour commencer !');
-  }
+   $('mode').click();window.CDLView.show('work');
+   $('generation-screen').hidden=true;
+   message(text+' Bonne partie !');
+  }else{$('generation-continue').hidden=false;}
  };
  const tryAttempt=()=>{
   if(performance.now()-started>budget||attempt>=maxAttempts){
    finish('Aucune grille à solution unique certifiée dans le délai. Réessaie : ta grille précédente est conservée.');return;
   }
   attempt++;
+  $('generation-progress').textContent='Tentative '+attempt+'/'+maxAttempts+' · '+Math.round((performance.now()-started)/1000)+' s écoulées';$('generation-bar').style.width=Math.min(90,Math.round((performance.now()-started)/budget*90))+'%';
   const full=randomCompleteGrid(),edges=allEdges(full);
   // Un seul indice par frontière ; mélanger les types permet de contraindre nombres et couleurs.
   const clueTypes={};
@@ -383,7 +395,7 @@ function generatePuzzle(){
    test=solvePuzzle(blankForSolver(full),2,Math.min(1200,Math.max(100,budget-(performance.now()-started))));
   }
   if(test.timedOut||test.count!==1){
-   result.textContent='Essai '+attempt+' : ajustement des indices…';
+   result.textContent='Essai '+attempt+' : ajustement des indices…';$('generation-progress').textContent=result.textContent;
    setTimeout(tryAttempt,0);return;
   }
   // Retirer des indices uniquement si l'unicité est prouvée (aucun dépassement de délai).
@@ -397,7 +409,7 @@ function generatePuzzle(){
    const remaining=budget-(performance.now()-started);
    const check=solvePuzzle(blankForSolver(full),2,Math.max(100,Math.min(700,remaining)));
    if(check.timedOut||check.count!==1)full.clues[k]=old;
-   result.textContent='Génération : '+i+'/'+keys.length+' indices examinés…';
+   result.textContent='Génération : '+i+'/'+keys.length+' indices examinés…';$('generation-progress').textContent='Tentative '+attempt+' · '+i+'/'+keys.length+' indices examinés · '+Math.round((performance.now()-started)/1000)+' s';$('generation-bar').style.width=Math.min(98,Math.round((performance.now()-started)/budget*95))+'%';
    setTimeout(reduce,0);
   };
   setTimeout(reduce,0);
