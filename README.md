@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V27** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V28** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -210,13 +210,10 @@ Le record d’un format est désormais la partie avec **le moins d’erreurs**, 
 Les records anciens dont le nombre d’erreurs est inconnu ne sont plus assimilés à zéro erreur. Ils restent visibles jusqu’à l’obtention d’un résultat comparable avec un nombre d’erreurs connu. L’historique des parties n’est pas modifié.
 
 
-## V27 — Première estimation de difficulté (expérimentale)
+## V28 — Règles à l’accueil et évaluation automatique
 
-- Bouton **Évaluer la difficulté** en mode préparation, dans les commandes secondaires.
-- Analyse des indices d'une grille vide, sans utiliser les cases remplies pendant une partie.
-- Propagation logique des contraintes de voisinage, élimination des paires déjà fixées et identification d'une paire ne pouvant apparaître que dans une case.
-- Niveau indicatif de 1 à 5, calculé selon le nombre de passages logiques et les déductions nécessaires. Le niveau 5 signifie **non résolu par cet évaluateur simple** ; il ne prouve pas que la grille soit intrinsèquement experte.
-- Le niveau estimé est affiché après génération et dans l'historique des parties terminées, et conservé dans les exports JSON de grilles et de résultats.
-- Les parties antérieures ne possèdent pas de niveau et sont affichées avec « — ».
-
-**Limites :** cet évaluateur est une première version, non étalonnée sur les niveaux officiels Acrylogic. Il ne remplace pas le solveur exact pour vérifier l'unicité. Les grilles à plusieurs solutions peuvent également être classées provisoirement niveau 5.
+- La page d’accueil présente le but et les règles : unicité des paires chiffre-couleur, sommes, mélanges et indices négatifs.
+- Lors du passage en **mode jeu**, qu’il soit manuel ou consécutif à une génération, la difficulté est évaluée automatiquement et affichée dans le bandeau de jeu (1 à 5). Le détail est disponible dans la zone de messages.
+- L’évaluation est calculée à partir des indices de la grille, indépendamment des réponses déjà saisies.
+- Le niveau est enregistré avec chaque partie terminée et apparaît dans l’historique. Les anciennes parties sans niveau affichent « — » ; l’importation de leurs fichiers reste possible.
+- **Attention :** l’évaluateur V27/V28 est encore une estimation provisoire fondée sur des propagations de contraintes. Il ne distingue pas encore rigoureusement les cinq techniques progressives prévues ; le niveau 5 peut signifier simplement que ces techniques sont insuffisantes.
