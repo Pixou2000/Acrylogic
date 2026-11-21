@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V20** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V22** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -141,3 +141,32 @@ Lorsque la grille est entièrement remplie et que **chaque chiffre et chaque cou
 - Une solution **affichée par le bouton Résoudre** ne donne pas droit à un record.
 
 **Limite :** la fin automatique suppose qu'une solution unique ait été calculée. Si la recherche est indéterminée ou si la grille a plusieurs solutions, le contrôle des indices reste disponible.
+
+
+## V21 — Records partageables entre appareils
+
+Un **tableau des records** affiche le meilleur temps pour chaque format, avec le nombre d'erreurs et la date. Deux nouvelles commandes permettent d'**exporter** les records dans `ColorDigitLogic_records.json` et de les **importer** sur un autre appareil (Mac, iPad ou iPhone), par exemple via iCloud Drive.
+
+- L'importation **fusionne** les records : seul le meilleur temps de chaque format est conservé. En cas d'égalité, le record local est conservé.
+- Les anciens records enregistrés dans `localStorage` par les versions précédentes sont repris automatiquement. Leur **date et nombre d'erreurs sont inconnus** et sont affichés par « — ».
+- Les nouveaux records comprennent le temps en millisecondes, le nombre d'erreurs et la date ISO.
+- Le fichier exporté est distinct des fichiers JSON des grilles. Les records restent disponibles localement après l'export.
+- La synchronisation **n'est pas automatique** : il faut exporter et importer le fichier lorsqu'on souhaite transférer les meilleurs temps entre appareils.
+- Le stockage local peut être effacé par le navigateur ; conserver une copie du JSON dans iCloud Drive est recommandé.
+
+**Format JSON** : `{ "type": "ColorDigitLogicRecords", "version": 1, "exportedAt": "...", "records": { "2x3": { "timeMs": 154000, "errors": 1, "date": "..." } } }`.
+
+
+## V22 — Historique complet des parties
+
+Chaque **partie terminée normalement** est enregistrée dans le stockage local du navigateur avec un identifiant unique, la date, le format de grille, le temps et le nombre d'erreurs. Les parties simplement commencées, abandonnées ou révélées par le solveur ne sont pas enregistrées comme réussites.
+
+- Un tableau affiche les 100 dernières parties, avec les statistiques globales (nombre de parties, temps moyen, erreurs moyennes).
+- Les records par format sont conservés.
+- **Exporter les résultats (JSON)** crée `ColorDigitLogic_resultats.json`, qui contient toutes les parties enregistrées, même celles au-delà des 100 dernières affichées, ainsi que les anciens records.
+- **Importer des résultats JSON** fusionne les parties de plusieurs appareils par identifiant unique et évite de compter deux fois une partie déjà importée.
+- L'importation des anciens fichiers `ColorDigitLogic_records.json` (V21) reste possible, mais ils ne contiennent pas l'historique des parties.
+- L'export/import est **manuel** : placer le fichier dans iCloud Drive facilite le transfert, mais ne crée pas de synchronisation automatique.
+- Les parties effectuées avant la V22 ne peuvent pas être reconstituées à partir des seuls records.
+
+**Important :** les statistiques sont basées sur les parties terminées, et non sur toutes les tentatives commencées. Le classement par niveau de difficulté sera ajouté ultérieurement, lorsque l'évaluateur de difficulté sera disponible.
