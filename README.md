@@ -2,7 +2,7 @@
 
 **ColorDigitLogic** est une application web indépendante permettant de recopier, compléter et vérifier des grilles de logique mêlant **nombres et couleurs**. Elle fonctionne sur ordinateur, tablette et téléphone, directement dans le navigateur.
 
-**Version actuelle : V19** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
+**Version actuelle : V20** — application web installable (PWA), utilisable hors ligne après un premier chargement, avec solveur et contrôle immédiat des erreurs par rapport à la solution unique lorsqu’elle existe.
 
 **Jouer :** https://pixou2000.github.io/ColorDigitLogic/
 
@@ -128,3 +128,16 @@ Le bouton **Générer une grille** crée une répartition aléatoire de toutes l
 - Le générateur travaille localement dans le navigateur, sans serveur.
 - Le résultat est exportable en JSON comme les autres grilles.
 - **Limites :** la génération peut prendre plusieurs secondes, notamment en 5×6 ; la difficulté n'est pas encore calibrée, et la suppression des indices est une heuristique, pas une minimisation garantie.
+
+
+## V20 — Fin de partie automatique et records
+
+Lorsque la grille est entièrement remplie et que **chaque chiffre et chaque couleur** correspond à la solution unique calculée à partir des indices, la partie est automatiquement terminée :
+
+- Le chronomètre s'arrête immédiatement après la dernière saisie correcte.
+- Un message « Grille résolue ! » affiche le temps et le nombre d'erreurs.
+- Le record du format de grille est mis à jour si le temps est meilleur, et son affichage est actualisé sans recharger la page.
+- Le bouton « Vérifier » reste disponible pour les grilles incomplètes ou les situations sans solution unique confirmée.
+- Une solution **affichée par le bouton Résoudre** ne donne pas droit à un record.
+
+**Limite :** la fin automatique suppose qu'une solution unique ait été calculée. Si la recherche est indéterminée ou si la grille a plusieurs solutions, le contrôle des indices reste disponible.
